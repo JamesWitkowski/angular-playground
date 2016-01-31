@@ -4,5 +4,13 @@ app.controller('ControllersController', ControllersController);
 
 
 function ControllersController(){
-	this.controllersStatus = 'Working';
+    var vm = this;
+    vm.controllersStatus = 'Working';
+    vm.friends = ['Joey', 'Chandler', 'Monica', 'Phebes', 'Ross & Rachel'];
+    
+    vm.addFriend = function(friend){
+       vm.friends.push(friend);
+        vm.newFriend = null;
+    }
+    
 }
