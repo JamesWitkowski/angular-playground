@@ -27,8 +27,10 @@ function CartController(){
   * of each item that is in our cart
   */ 
   this.calculateCartTotal = function() {
+      
       var total = 0;
-        this.cart.items, function(item) {
+        this.cart.items = function(item) {
+           
             total += item.quantity * item.price;
         }
 
@@ -46,7 +48,7 @@ function CartController(){
     this.cart.splice(item, 1)
   };
   
-  this.addItemToCart = function(item){}
+  this.addItemToCart = function(item){
       //item gets passed in to this function from the view
       
       /*
@@ -62,13 +64,16 @@ function CartController(){
       to figure out which properties from item need to be 
       remaped to the newItem object. 
       After building the newItem add it to the cart 
-     *\
-     
-     
-     
-     
-     
-     
-     
-     
-     
+     */
+    var newItem = {
+        name:'',
+        color:'',
+        size: '',
+        quantity: 1,
+        price:'',
+      };
+      
+    this.cart.push(newItem);  
+      
+  }
+}
