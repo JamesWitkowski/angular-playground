@@ -16,9 +16,13 @@ function CartController(){
   this.name = "My BɼokƏn Cart!";
   
   this.getCartCount = function(){
-    //return the length of our cart
-    return this.cart.length;
+    var count = 0;
+    angular.forEach(this.cart, function(item){
+        count += item.quantity;
+    })
+    return count;
   };
+  
   
   /*
   * Write a calculateCartTotal function
@@ -27,16 +31,12 @@ function CartController(){
   * of each item that is in our cart
   */ 
   this.calculateCartTotal = function() {
-      
-      var total = 0;
-        this.cart.items = function(item) {
-           
-            total += item.quantity * item.price;
-        }
-
-        return total; 
-  };
-  
+       var total = 0;
+       angular.forEach(this.cart, function(item){
+           total += item.price * item.quantity;
+       })
+       return total;
+  };       
   this.removeItemFromCart = function(item){
     //Item gets passed in from our view when the user clicks the x button
     /*
@@ -66,11 +66,11 @@ function CartController(){
       After building the newItem add it to the cart 
      */
     var newItem = {
-        name:'',
-        color:'',
-        size: '',
+        name:item.name,
+        color:item.selectedColor,
+        size: item.selectedSize,
         quantity: 1,
-        price:'',
+        price:item.price,
       };
       
     this.cart.push(newItem);  
