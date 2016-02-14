@@ -13,7 +13,7 @@ function CartController(){
     };
   //*** No Need to edit anything above this line ****
   
-  this.name = "My BɼokƏn Cart!";
+  this.name = "My BɼokƏn Cart is now fixed and taking new orders!";
   
   this.getCartCount = function(){
     var count = 0;
